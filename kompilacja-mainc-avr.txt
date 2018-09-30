@@ -1,0 +1,6 @@
+vi main.c
+avr-gcc -Wall -g -Os -mmcu=attiny13 -o main.bin main.c
+avr-size -C main.bin
+avr-objcopy -j .text -j .data -O ihex main.bin main.hex
+sudo avrdude -p attiny13 -c usbasp -U flash:w:main.hex:i -F -P usb
+
